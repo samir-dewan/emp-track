@@ -3,7 +3,7 @@ hello there this is my project for t3 stack
 To-Do
 
 - [ x ] Deploy it (Vercel)
-- [ ] Scaffold basic ui with mock data
+- [ x ] Scaffold basic ui with mock data
 - [ ] Set up database (Postgres)
 - [ ] Attach database to UI
 - [ ] Add Auth (Clerk)
