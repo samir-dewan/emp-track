@@ -5,8 +5,8 @@ To-Do
 - [ x ] Deploy it (Vercel)
 - [ x ] Scaffold basic ui with mock data
 - [ x ] Tidy up build process
-- [ ] Set up database (Postgres)
-- [ ] Attach database to UI
+- [ x ] Set up database (Postgres)
+- [ x ] Build schema for database
 - [ ] Add Auth (Clerk)
 - [ ] Add image upload
 - [ ] Error Management (w/ Sentry)
