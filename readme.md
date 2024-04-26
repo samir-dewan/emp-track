@@ -7,7 +7,7 @@ To-Do
 - [ x ] Tidy up build process
 - [ x ] Set up database (Postgres)
 - [ x ] Build schema for database
-- [ ] Add Auth (Clerk)
+- [ x ] Add Auth (Clerk)
 - [ ] Add image upload
 - [ ] Error Management (w/ Sentry)
 - [ ] Routing (parallel route)
