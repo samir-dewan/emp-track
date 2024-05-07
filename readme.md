@@ -9,6 +9,8 @@ To-Do
 - [ x ] Build schema for database
 - [ x ] Add Auth (Clerk)
 - [ ] Add image upload
+- [ ] "taint" (server-only)
+- [ ] Use Next/Image component
 - [ ] Error Management (w/ Sentry)
 - [ ] Routing (parallel route)
 - [ ] Delete Button (w/ Server Actions)
