@@ -1,4 +1,5 @@
-import { SignedIn, SignedOut} from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Image from "next/image";
 import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
@@ -7,24 +8,29 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap justify-center gap-4">
       {images.map((image) => (
-        <div key={image.id} className="flex w-48 flex-col p-4">
-          <img src={image.url} alt={`image: ${image.id.toString}`} />
+        <div key={image.id} className="flex h-48 w-48 flex-col p-4">
+          <Image
+            src={image.url}
+            width={192}
+            height={192}
+            alt={image.name}
+          />
           <div>{image.name}</div>
         </div>
       ))}
-      <p>hello - making dummy gallery</p>
     </div>
   );
 }
 
 export default async function HomePage() {
-
   return (
     <main>
       <SignedOut>
-        <div className="h-full w-full text-2xl text-center">Please sign in above</div>
+        <div className="h-full w-full text-center text-2xl">
+          Please sign in above
+        </div>
       </SignedOut>
       <SignedIn>
         <Images />

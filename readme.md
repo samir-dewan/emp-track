@@ -8,9 +8,9 @@ To-Do
 - [ x ] Set up database (Postgres)
 - [ x ] Build schema for database
 - [ x ] Add Auth (Clerk)
-- [ ] Add image upload
-- [ ] "taint" (server-only)
-- [ ] Use Next/Image component
+- [ x ] Add image upload
+- [ x ] "taint" (server-only) - not really
+- [ x ] Use Next/Image component
 - [ ] Error Management (w/ Sentry)
 - [ ] Routing (parallel route)
 - [ ] Delete Button (w/ Server Actions)
