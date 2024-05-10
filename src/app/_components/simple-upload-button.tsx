@@ -49,12 +49,34 @@ function UploadSVG() {
   );
 }
 
+function LoadingEllipsesSVG() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="white"
+    >
+      <circle className="spinner_qM83" cx="4" cy="20" r="2" />
+      <circle className="spinner_qM83 spinner_oXPr" cx="9" cy="20" r="2" />
+      <circle className="spinner_qM83 spinner_ZTLf" cx="14" cy="20" r="2" />
+    </svg>
+  );
+}
+
 export function SimpleUploadButton() {
   const router = useRouter();
 
   const { inputProps } = useUploadThingInputProps("imageUploader", {
     onUploadBegin() {
-      toast("Uploading...", {duration: 100000, id: "upload-begin"});
+      toast(
+        <div className="flex">
+          <span className="text-xl font-semibold">Uploading</span>
+          <LoadingEllipsesSVG />
+        </div>,
+        { duration: 100000, id: "upload-begin" },
+      );
     },
     onClientUploadComplete(res) {
       toast.dismiss("upload-begin");
@@ -64,7 +86,9 @@ export function SimpleUploadButton() {
   });
   return (
     <div>
-      <label htmlFor="upload-button" className="cursor-pointer"><UploadSVG /></label>
+      <label htmlFor="upload-button" className="cursor-pointer">
+        <UploadSVG />
+      </label>
       <input
         id="upload-button"
         type="file"
