@@ -14,7 +14,7 @@ To-Do
 - [ x ] Error Management (w/ Sentry)
 - [ x ] Routing (parallel route)
 - [ x ] Update upload button
-- [ ] ShadUI (toasts)
+- [ x ] ShadUI (toasts)
 - [ ] Delete Button (w/ Server Actions)
 - [ ] Analytics (posthog)
 - [ ] Rate Limiting (upstash)

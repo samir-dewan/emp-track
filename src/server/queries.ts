@@ -1,33 +1,44 @@
 import "server-only";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
+import { and, eq } from "drizzle-orm";
+import { images } from "./db/schema";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function getMyImages() {
+  const user = auth();
 
-    const user = auth();
+  if (!user.userId) throw new Error("Unauthorised");
 
-    if (!user.userId) throw new Error("Unauthorised");
+  const images = await db.query.images.findMany({
+    where: (model, { eq }) => eq(model.userId, user.userId),
+    orderBy: (model, { desc }) => desc(model.id),
+  });
 
-    const images = await db.query.images.findMany({
-        where: (model, {eq}) => eq(model.userId, user.userId),
-        orderBy: (model, { desc }) => desc(model.id)
-    });
-
-    return images;
+  return images;
 }
 
 export async function getImage(id: number) {
-    const user = auth();
-    if (!user.userId) throw new Error("Unauthorised");
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorised");
 
-    const image = await db.query.images.findFirst({
-        where: (model, { eq }) => eq(model.id, id),
-    });
+  const image = await db.query.images.findFirst({
+    where: (model, { eq }) => eq(model.id, id),
+  });
 
-    if (!image) throw new Error("Image not found");
+  if (!image) throw new Error("Image not found");
 
-    if (image.userId !== user.userId) throw new Error("Unauthorised");
+  if (image.userId !== user.userId) throw new Error("Unauthorised");
 
-    return image;
+  return image;
 }
 
+export async function deleteImage(id: number) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorised");
+
+  await db.delete(images).where(and(eq(images.id, id), eq(images.userId, user.userId)));
+
+  redirect("/");
+}

@@ -1,4 +1,4 @@
-import FullPageImageView from "~/app/components/full-image-page";
+import FullPageImageView from "~/common/full-image-page";
 
 export default function PhotoPage({
   params: { id: photoId },
@@ -9,6 +9,6 @@ export default function PhotoPage({
   if (Number.isNaN(idAsNumber)) throw new Error("invalid photo ID");
 
   return (
-    <FullPageImageView id={idAsNumber} />
+    <FullPageImageView photoId={idAsNumber} />
   );
 }
