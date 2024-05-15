@@ -15,8 +15,8 @@ To-Do
 - [ x ] Routing (parallel route)
 - [ x ] Update upload button
 - [ x ] ShadUI (toasts)
-- [ ] Delete Button (w/ Server Actions)
-- [ ] Analytics (posthog)
-- [ ] Rate Limiting (upstash)
+- [ x ] Delete Button (w/ Server Actions)
+- [ x ] Analytics (posthog)
+- [ ] Rate Limiting (upstash) - can do later if required ( see T3 )
 
 yess
