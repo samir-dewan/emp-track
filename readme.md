@@ -2,6 +2,7 @@ hello there this is my project for t3 stack
 
 To-Do
 
+Photo Gallery - T3
 - [ x ] Deploy it (Vercel)
 - [ x ] Scaffold basic ui with mock data
 - [ x ] Tidy up build process
