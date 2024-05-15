@@ -1,4 +1,4 @@
-hello there this is my project for t3 stack
+Photo Gallery (Theo - T3)
 
 To-Do
 
@@ -19,4 +19,18 @@ To-Do
 - [ x ] Analytics (posthog)
 - [ ] Rate Limiting (upstash) - can do later if required ( see T3 )
 
-yess
+Personal CV Website
+
+- [ ] Update schema to allow distinction between corporate, project, academic
+- [ ] Map new schema to experiences
+- [ ] Create new experience cards and content
+- [ ] Stylise experience cards
+- [ ] Create filter for experience cards
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
