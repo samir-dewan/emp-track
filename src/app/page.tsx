@@ -9,18 +9,24 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
+    <div className="flex justify-center gap-4 overflow-x-scroll h-screen">
       {images.map((image) => (
-        <div key={image.id} className="flex h-48 w-48 overflow-hidden flex-col p-4">
-          <Link href={`/img/${image.id}`}>
-          <Image
-            src={image.url}
-            width={192}
-            height={192}
-            alt={image.name}
-          />
+        <div key={image.id} className="flex relative h-full w-1/4 flex-shrink-0 flex-col p-4">
+          <Link href={`/img/${image.id}`} className="w-full h-full">
+            <Image
+              src={image.imageUrl}
+              alt={image.name}
+              layout="fill"
+              style={{
+                objectFit: "cover",
+              }}
+            />
+              <div className="right-6 bottom-6 absolute">
+                <span>
+                  {image.name}
+                </span>
+              </div>
           </Link>
-          <div>{image.name}</div>
         </div>
       ))}
     </div>

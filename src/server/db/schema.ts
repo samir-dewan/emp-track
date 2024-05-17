@@ -3,6 +3,7 @@
 
 import { sql } from "drizzle-orm";
 import {
+  date,
   index,
   pgTableCreator,
   serial,
@@ -19,11 +20,18 @@ import {
 export const createTable = pgTableCreator((name) => `emp-track_${name}`);
 
 export const images = createTable(
-  "image",
+  "exp",
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
-    url: varchar("url", {length: 1024}).notNull(),
+    imageUrl: varchar("imageUrl", {length: 1024}).notNull(),
+    experienceType: varchar("experienceType", {length: 256}).notNull(),
+    logoUrl: varchar("logoUrl", {length: 256}),
+    role: varchar("role", {length: 256}),
+    dateStarted: date("dateStarted").notNull(),
+    dateCompleted: date("dateCompleted"),
+    description: varchar("description").notNull(),
+    techStack: varchar("techStack"),
     userId: varchar("userId", {length: 256}).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)

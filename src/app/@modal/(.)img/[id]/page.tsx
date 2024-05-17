@@ -1,4 +1,3 @@
-
 import { Modal } from "./modal";
 import FullPageImageView from "~/common/full-image-page";
 
