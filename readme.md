@@ -21,11 +21,11 @@ To-Do
 
 Personal CV Website
 
-- [ ] Update schema to allow distinction between corporate, project, academic
-- [ ] Map new schema to experiences
-- [ ] Create new experience cards and content
+- [ x ] Update schema to allow distinction between corporate, project, academic
+- [ x ] Map new schema to experiences
+- [ x ] Create big experience cards and style
+- [ ] Create small experience cards and style
 - [ ] Stylise experience cards
-- [ ] Create filter for experience cards
 - [ ]
 - [ ]
 - [ ]
