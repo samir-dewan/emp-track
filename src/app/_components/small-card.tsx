@@ -12,16 +12,17 @@ type CardProps = {
     length: number;
 }
 
-export default function BigCard({id, imageUrl, name, translation, hovered, length}: CardProps) {
+export default function SmallCard({id, imageUrl, name, translation, hovered, length}: CardProps) {
 
-    const baseTranslateNumber = hovered ? translation * (length * 2) - (length * (length / 1.15)) : (translation) * (length * 1.25) - (length * length / 2);
-    const baseRotateNumber = hovered ? (translation - (length / 2)) * length : (translation - (length / 2)) * 2;
+    const baseTranslateXNumber = hovered ? translation * (length * 3) - (length * 4) : 0;
+    const baseRotateNumber = hovered ? (translation - (length / 2) / 5) * length : (translation - (length / 2)) * 2;
+    const translateYNumber = hovered ? -6 : 0 ;
 
     return (
         <div key={id} 
-        className="aspect-[5/7] w-[11.11%] bg-white bg-opacity-5 rounded-xl shadow-lg shadow-black absolute transition-transform duration-500 ease-in-out z-10" 
+        className="w-[5%] aspect-[5/7] bg-white bg-opacity-5 rounded-xl absolute transition-transform duration-500 ease-in-out z-0" 
         style={{
-                transform: `translateX(${baseTranslateNumber}rem) rotate(${baseRotateNumber}deg)`
+                transform: `translateX(${baseTranslateXNumber}rem) translateY(${translateYNumber}rem) rotate(${baseRotateNumber}deg)`
             }}
         >
             <Link href={`/img/${id}`} className=" group w-full h-full block">
@@ -31,6 +32,7 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
               layout="fill"
               style={{
                 objectFit: "cover",
+                transform: `rotate(${baseRotateNumber}deg)`
               }}
               className="transition duration-300 ease-in-out filter contrast-50 group-hover:contrast-100 rounded-xl"
             />

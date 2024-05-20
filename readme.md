@@ -24,9 +24,9 @@ Personal CV Website
 - [ x ] Update schema to allow distinction between corporate, project, academic
 - [ x ] Map new schema to experiences
 - [ x ] Create big experience cards and style
-- [ ] Create small experience cards and style
-- [ ] Stylise experience cards
-- [ ]
+- [ x ] Create small experience cards and style
+- [ x ] Push all cards to bottom
+- [ ] On highlight, titles and descriptions should appear
 - [ ]
 - [ ]
 - [ ]
