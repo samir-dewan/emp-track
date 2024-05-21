@@ -1,4 +1,4 @@
-"use client"; //client side component
+"use client";
 
 import { type ElementRef, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
