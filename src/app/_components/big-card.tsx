@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -34,7 +33,7 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
         if (isSelected) {
             setIsAnimating(true);
             const timer = setTimeout(() => {
-                setIsAnimating(false);
+                console.log(isAnimating); //adjust this when link is set
             }, 500); // Duration of the animation
             return () => clearTimeout(timer);
         }
@@ -46,15 +45,15 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
         w-[12%] shadow-lg
         shadow-black z-10` : 
         `w-[5%]`} aspect-[5/7] bg-white bg-opacity-5 rounded-xl 
-        absolute transition-transform duration-500 ease-in-out z-0 ${isAnimating ? 'fixed top-1/2 left-0 transform -translate-y-1/2' : ''}`} 
+        absolute transition-transform duration-500 ease-in-out z-0 ${isAnimating && 'fixed transform'}`} 
         style={{
-            transform: isAnimating ? `translateX(125%) translateY(-50%) scale(1.5)` : experienceType === "Professional"
+            transform: isAnimating ? `translateX(-300%) translateY(-100%) scale(1.5)` : experienceType === "Professional"
                 ? `translateX(${bigTranslateNumber}rem) rotate(${bigRotateNumber}deg)`
                 : `translateX(${smallTranslateXNumber}rem) translateY(${smallTranslateYNumber}rem) rotate(${smallRotateNumber}deg)`
         }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        onClick={() => {
+        onMouseDown={() => {
             setIsAnimating(true);
             onClick();
         }}
@@ -68,7 +67,7 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
                         style={{
                             objectFit: "cover",
                         }}
-                        className="transition duration-300 ease-in-out filter contrast-50 group-hover:contrast-100 rounded-xl"
+                        className="transition duration-300 ease-in-out rounded-xl"
                     />
                 ) : (
                     <Image
