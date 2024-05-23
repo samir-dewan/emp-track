@@ -39,6 +39,12 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
         }
     }, [isSelected]);
 
+    useEffect(() => {
+        if (!isSelected) {
+            setIsAnimating(false);
+        }
+    })
+
     return (
         <div key={id} 
         className={`${experienceType === "Professional" ? `
@@ -47,7 +53,7 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
         `w-[5%]`} aspect-[5/7] bg-white bg-opacity-5 rounded-xl 
         absolute transition-transform duration-500 ease-in-out z-0 ${isAnimating && 'fixed transform'}`} 
         style={{
-            transform: isAnimating ? `translateX(-300%) translateY(-100%) scale(1.5)` : experienceType === "Professional"
+            transform: isAnimating ? `translateX(${experienceType === "Professional" ? `-300%` : `-650%`}) translateY(${experienceType === "Professional" ? `-100%` : `-200%`}) scale(${experienceType === "Professional" ? `1.5` : `4`})` : experienceType === "Professional"
                 ? `translateX(${bigTranslateNumber}rem) rotate(${bigRotateNumber}deg)`
                 : `translateX(${smallTranslateXNumber}rem) translateY(${smallTranslateYNumber}rem) rotate(${smallRotateNumber}deg)`
         }}

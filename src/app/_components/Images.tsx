@@ -37,6 +37,10 @@ export default function Images({ images }: ImagesProps) {
         setSelectedCard(id);
     }
 
+    const handleDeselect = () => {
+        setSelectedCard(null);
+    }
+
     const bigCardImages = images.filter(image => image.experienceType === 'Professional');
     const smallCardImages = images.filter(image => image.experienceType !== "Professional");
     const selectedImage = images.find((image) => image.id === selectedCard);
@@ -90,7 +94,7 @@ export default function Images({ images }: ImagesProps) {
                         onMouseEnter={() => handleHover(selectedImage!.name, selectedImage!.role, selectedImage!.dateStarted, selectedImage!.dateCompleted)}
                         onMouseLeave={handleLeave}
                         hovered={true}
-                        onClick={() => handleClick(selectedImage!.id)}
+                        onClick={() => handleDeselect()}
                         isSelected={true}
                     />
                 )}
