@@ -11,7 +11,7 @@ export default function DescriptionBox({isVisible, description, logoUrl, name}: 
     if (!isVisible) return null;
 
     return (
-        <div className="fixed right-0 top-1/4 w-1/3 bg-white p-4 rounded-lg shadow-lg z-20">
+        <div className="fixed right-12 top-20 w-4/6 h-5/6 bg-blue-500 p-2 rounded-lg shadow-lg z-20">
           <h2 className="text-xl font-bold mb-2">{name}</h2>
           <p>{description}</p>
         </div>

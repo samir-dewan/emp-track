@@ -59,8 +59,8 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
             onClick();
         }}
         >
+        <div className="group w-full h-full block">
             {isAnimating ? (
-                <div className="group w-full h-full block">
                     <Image
                         src={imageUrl}
                         alt={name}
@@ -70,18 +70,18 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
                         }}
                         className="transition duration-300 ease-in-out filter contrast-50 group-hover:contrast-100 rounded-xl"
                     />
+                ) : (
+                    <Image
+                    src={imageUrl}
+                    alt={name}
+                    layout="fill"
+                    style={{
+                        objectFit: "cover",
+                    }}
+                    className="transition duration-300 ease-in-out filter contrast-50 group-hover:contrast-100 rounded-xl"
+                    />
+                )}
                 </div>
-            ) : (
-                    <Image
-                        src={imageUrl}
-                        alt={name}
-                        layout="fill"
-                        style={{
-                            objectFit: "cover",
-                        }}
-                        className="transition duration-300 ease-in-out filter contrast-50 group-hover:contrast-100 rounded-xl"
-                    />
-            )}
         </div>
     )
 }

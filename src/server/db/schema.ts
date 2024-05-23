@@ -9,6 +9,7 @@ import {
   serial,
   timestamp,
   varchar,
+  integer,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -22,7 +23,7 @@ export const createTable = pgTableCreator((name) => `emp-track_${name}`);
 export const images = createTable(
   "exp",
   {
-    id: serial("id").primaryKey(),
+    id: serial("id").primaryKey().notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     imageUrl: varchar("imageUrl", {length: 1024}).notNull(),
     experienceType: varchar("experienceType", {length: 256}).notNull(),
@@ -31,7 +32,8 @@ export const images = createTable(
     dateStarted: date("dateStarted").notNull(),
     dateCompleted: date("dateCompleted"),
     description: varchar("description").notNull(),
-    techStack: varchar("techStack"),
+    techStackIds: integer("techStackIds").array(),
+    highlightIds: integer("highlightIds").array(),
     userId: varchar("userId", {length: 256}).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
@@ -42,3 +44,20 @@ export const images = createTable(
     nameIndex: index("name_idx").on(example.name),
   })
 );
+
+export const techStack = createTable(
+  "techStack",
+  {id: serial("id").primaryKey().notNull(),
+    name: varchar("name", { length: 256}).notNull(),
+    imageUrl: varchar("imageUrl", { length: 1024}).notNull(),
+  }
+)
+
+export const highlight = createTable(
+  "highlight",
+  {id: serial("id").primaryKey().notNull(),
+    imageUrl: varchar("imageUrl", { length: 1024}).notNull(),
+    keystat: varchar("keystat", { length: 256}).notNull(),
+    description: varchar("description", {length: 1024}).notNull(),
+  }
+)
