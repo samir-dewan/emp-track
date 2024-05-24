@@ -26,11 +26,11 @@ Personal CV Website
 - [ x ] Create big experience cards and style
 - [ x ] Create small experience cards and style
 - [ x ] Push all cards to bottom
-- [ ] On highlight, titles and descriptions should appear
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+
+
+24/05
+- [ x ] Update Drizzle so that it can hold links
+- [ ] Populate highlights for Tech Nation
+- [ ] Create highlight box for Tech Nation
+- [ ] Update CSS for highlight box
+- [ ] Update CSS for container

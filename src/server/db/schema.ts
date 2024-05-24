@@ -34,6 +34,7 @@ export const images = createTable(
     description: varchar("description").notNull(),
     techStackIds: integer("techStackIds").array(),
     highlightIds: integer("highlightIds").array(),
+    linkIds: integer("linkIds").array(),
     userId: varchar("userId", {length: 256}).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
@@ -59,5 +60,14 @@ export const highlight = createTable(
     imageUrl: varchar("imageUrl", { length: 1024}).notNull(),
     keystat: varchar("keystat", { length: 256}).notNull(),
     description: varchar("description", {length: 1024}).notNull(),
+  }
+)
+
+export const link = createTable(
+  "link",
+  {id: serial("id").primaryKey().notNull(),
+    linkUrl: varchar("linkurl", {length: 512}).notNull(),
+    text: varchar("text", {length: 128}),
+    logo: varchar("logo", {length: 512}),
   }
 )
