@@ -30,7 +30,7 @@ Personal CV Website
 
 24/05
 - [ x ] Update Drizzle so that it can hold links
-- [ ] Populate highlights for Tech Nation
-- [ ] Create highlight box for Tech Nation
+- [ ] Populate highlights for Hirechain
+- [ ] Create highlight box for Hirechain
 - [ ] Update CSS for highlight box
 - [ ] Update CSS for container

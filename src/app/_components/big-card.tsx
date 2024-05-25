@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type CardProps = {
     id: number;
     name: string;
-    imageUrl: string;
+    logoUrl: string;
     translation: number;
     hovered: boolean;
     length: number;
@@ -17,8 +17,10 @@ type CardProps = {
     isSelected: boolean;
 }
 
-export default function BigCard({id, imageUrl, name, translation, hovered, length, experienceType, onMouseEnter, onMouseLeave, onClick, isSelected}: CardProps) {
+export default function BigCard({id, logoUrl, name, translation, hovered, length, experienceType, onMouseEnter, onMouseLeave, onClick, isSelected}: CardProps) {
     const [isAnimating, setIsAnimating] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ top: 0, left: 0});
 
     //big cards
     const bigTranslateNumber = hovered ? translation * (length * 2) - (length * (length / 1.15)) : (translation) * (length * 1.25) - (length * length / 2);
@@ -28,6 +30,18 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
     const smallTranslateXNumber = hovered ? translation * (length * 3) - (length * 4) : 0;
     const smallRotateNumber = hovered ? (translation - (length / 2) / 5) * length : (translation - (length / 2)) * 2;
     const smallTranslateYNumber = hovered ? -6 : 0 ;
+
+    useEffect(() => {
+        if(isAnimating && cardRef.current) {
+            const rect = cardRef.current.getBoundingClientRect();
+            console.log(rect);
+            const top = (experienceType === "Professional" ? 15 : -72 )-rect.top;
+            const left = -rect.left;
+            setPosition({ top, left });
+        }
+    }, [isAnimating])
+
+
 
     useEffect(() => {
         if (isSelected) {
@@ -46,14 +60,18 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
     })
 
     return (
-        <div key={id} 
+        <div ref={cardRef} key={id} 
         className={`${experienceType === "Professional" ? `
         w-[12%] shadow-lg
-        shadow-black z-10` : 
-        `w-[5%]`} aspect-[5/7] bg-white bg-opacity-5 rounded-xl 
-        absolute transition-transform duration-500 ease-in-out z-0 ${isAnimating && 'fixed transform'}`} 
+        shadow-black z-50` : 
+        `w-[5%] z-40`} aspect-[5/7] bg-white bg-opacity-5 rounded-xl
+        absolute transition-all duration-500 ease-in-out ${isAnimating && 'w-[5%] aspect-square rounded-full'}`} 
         style={{
-            transform: isAnimating ? `translateX(${experienceType === "Professional" ? `-300%` : `-650%`}) translateY(${experienceType === "Professional" ? `-100%` : `-200%`}) scale(${experienceType === "Professional" ? `1.5` : `4`})` : experienceType === "Professional"
+            transform: isAnimating ? 
+            `
+            translateY(${position.top}px)
+            scale(1.25)`
+             : experienceType === "Professional"
                 ? `translateX(${bigTranslateNumber}rem) rotate(${bigRotateNumber}deg)`
                 : `translateX(${smallTranslateXNumber}rem) translateY(${smallTranslateYNumber}rem) rotate(${smallRotateNumber}deg)`
         }}
@@ -67,17 +85,17 @@ export default function BigCard({id, imageUrl, name, translation, hovered, lengt
         <div className="group w-full h-full block">
             {isAnimating ? (
                     <Image
-                        src={imageUrl}
+                        src={logoUrl}
                         alt={name}
                         layout="fill"
                         style={{
                             objectFit: "cover",
                         }}
-                        className="transition duration-300 ease-in-out rounded-xl"
+                        className="rounded-full transition duration-300 ease-in-out filter contrast-50 hover:contrast-100"
                     />
                 ) : (
                     <Image
-                    src={imageUrl}
+                    src={logoUrl}
                     alt={name}
                     layout="fill"
                     style={{

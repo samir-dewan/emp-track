@@ -7,7 +7,8 @@ import DescriptionBox from "./DescriptionBox";
 
 type ImageProps = {
     id: number;
-    imageUrl: string;
+    imageUrl?: string;
+    logoUrl: string;
     name: string;
     experienceType: string;
     role: string;
@@ -71,7 +72,7 @@ export default function Images({ images }: ImagesProps) {
                                 translation={currentTranslation} 
                                 length={currentLength}
                                 id={image.id} 
-                                imageUrl={image.imageUrl} 
+                                logoUrl={image.logoUrl} 
                                 name={image.name}
                                 experienceType={image.experienceType}
                                 onMouseEnter={() => handleHover(image.name, image.role, image.dateStarted, image.dateCompleted)}
@@ -88,7 +89,7 @@ export default function Images({ images }: ImagesProps) {
                         translation={0} 
                         length={1}
                         id={selectedImage!.id} 
-                        imageUrl={selectedImage!.imageUrl} 
+                        logoUrl={selectedImage!.logoUrl} 
                         name={selectedImage!.name}
                         experienceType={selectedImage!.experienceType}
                         onMouseEnter={() => handleHover(selectedImage!.name, selectedImage!.role, selectedImage!.dateStarted, selectedImage!.dateCompleted)}
@@ -106,13 +107,14 @@ export default function Images({ images }: ImagesProps) {
                 dateStarted={overlayContent.dateStarted}
                 dateCompleted={overlayContent.dateCompleted}
             />
-            {selectedImage && (
+            {/* {selectedImage && (
                 <DescriptionBox
                     isVisible={selectedCard !== null}
                     name={selectedImage.name}
                     description={selectedImage.description}
+                    imageUrl={selectedImage.imageUrl}
                 />
-            )}
+            )} */}
         </div>
     );
 }
