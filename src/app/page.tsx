@@ -15,6 +15,7 @@ export default async function HomePage() {
         <SignedIn>
           <ServerSideImages />
           <ServerSideHighlights id={7} />
+          
         </SignedIn>
       </main>
   );

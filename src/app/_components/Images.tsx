@@ -3,7 +3,7 @@
 import { useState } from "react";
 import BigCard from "./big-card";
 import OverlayBox from "./OverlayBox";
-import DescriptionBox from "./DescriptionBox";
+import DescriptionBox from "../../common/description-box";
 
 type ImageProps = {
     id: number;

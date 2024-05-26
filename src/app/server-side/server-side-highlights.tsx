@@ -1,5 +1,5 @@
 import { getHighlightsByExpId } from "~/server/queries";
-import HighlightBox from "../_components/HighlightBox";
+import HighlightBox from "../@description/[expId]/HighlightBox";
 
 export default async function ServerSideHighlights(props: {id: number}) {
     const highlights = await getHighlightsByExpId(props.id);
