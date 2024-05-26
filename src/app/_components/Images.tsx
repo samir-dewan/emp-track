@@ -50,7 +50,7 @@ export default function Images({ images }: ImagesProps) {
     let smallIndex = 0;
 
     return (
-        <div className="relative h-screen w-screen bg-black flex justify-center items-end overflow-hidden">
+        <div className="relative h-full w-full bg-black flex justify-center items-end z-20">
             <div className="w-[10%] aspect-[5/7] mb-16" 
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -107,14 +107,14 @@ export default function Images({ images }: ImagesProps) {
                 dateStarted={overlayContent.dateStarted}
                 dateCompleted={overlayContent.dateCompleted}
             />
-            {/* {selectedImage && (
+            {selectedImage && (
                 <DescriptionBox
                     isVisible={selectedCard !== null}
                     name={selectedImage.name}
                     description={selectedImage.description}
                     imageUrl={selectedImage.imageUrl}
                 />
-            )} */}
+            )}
         </div>
     );
 }

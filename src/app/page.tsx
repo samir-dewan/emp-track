@@ -5,9 +5,9 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   return (
-      <main>
+      <main className="h-full w-full">
         <SignedOut>
-          <div className="h-full w-full text-center text-2xl">
+          <div className="text-center text-2xl">
             Please sign in above
           </div>
         </SignedOut>

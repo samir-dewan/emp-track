@@ -14,8 +14,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "T3 Gallery",
-  description: "Demo with t3.gg",
+  title: "Samir Dewan - CV",
+  description: "Samir Dewan's CV made with T3",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -42,7 +42,9 @@ export default function RootLayout({
           <body className={`font-sans ${inter.variable} dark`}>
             <div className="grid h-screen grid-rows-[auto,1fr]">
               <TopNav />
-              <main className="overflow-y-scroll">{children}</main>
+              <main>
+                {children}
+              </main>
             </div>
             {modal}
             <div id="modal-root" />
