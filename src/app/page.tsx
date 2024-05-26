@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import ServerSideImages from "./server-side/server-side-images";
+import ServerSideHighlights from "./server-side/server-side-highlights";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,7 @@ export default async function HomePage() {
         </SignedOut>
         <SignedIn>
           <ServerSideImages />
+          <ServerSideHighlights id={7} />
         </SignedIn>
       </main>
   );

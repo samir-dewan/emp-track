@@ -109,6 +109,7 @@ export default function Images({ images }: ImagesProps) {
             />
             {selectedImage && (
                 <DescriptionBox
+                    id={selectedImage.id}
                     isVisible={selectedCard !== null}
                     name={selectedImage.name}
                     description={selectedImage.description}

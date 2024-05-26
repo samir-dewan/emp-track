@@ -25,17 +25,18 @@ export default function BigCard({id, logoUrl, name, translation, hovered, length
     //big cards
     const bigTranslateNumber = hovered ? translation * (length * 2) - (length * (length / 1.15)) : (translation) * (length * 1.25) - (length * length / 2);
     const bigRotateNumber = hovered ? (translation - (length / 2)) * length : (translation - (length / 2)) * 2;
+    const bigTranslateYButton = 15;
 
     //small cards
     const smallTranslateXNumber = hovered ? translation * (length * 3) - (length * 4) : 0;
     const smallRotateNumber = hovered ? (translation - (length / 2) / 5) * length : (translation - (length / 2)) * 2;
     const smallTranslateYNumber = hovered ? -6 : 0 ;
 
-    useEffect(() => {
+    useEffect(() => { //at some point, calculate the centre of each card, cause that will be the same
         if(isAnimating && cardRef.current) {
             const rect = cardRef.current.getBoundingClientRect();
             console.log(rect);
-            const top = (experienceType === "Professional" ? 15 : -72 )-rect.top;
+            const top = (experienceType === "Professional" ? bigTranslateYButton : -72 )-rect.top;
             const left = -rect.left;
             setPosition({ top, left });
         }

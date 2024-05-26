@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
-import { images } from "./db/schema";
+import { highlight, images } from "./db/schema";
 import { redirect } from "next/navigation";
 import analyticsServerClient from "./analytics";
 
@@ -18,6 +18,24 @@ export async function getMyImages() {
 
   return images;
 }
+
+export async function getHighlightsByExpId(expId: number) {
+  const user = auth();
+
+  if (!user.userId) throw new Error("Unauthorised");
+
+  const highlightsById = await db.select().from(highlight).where(eq(highlight.expId, expId));
+
+  return highlightsById;
+}
+
+//go into the highlights table
+
+//
+
+//find every instance where the highlight.exp_id equals the exp_id
+
+//db.select().from(highlight).where(eq(highlight.exp_id, exp.id))
 
 export async function getImage(id: number) {
   const user = auth();

@@ -1,6 +1,7 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
+import exp from "constants";
 import { sql } from "drizzle-orm";
 import {
   date,
@@ -57,6 +58,7 @@ export const techStack = createTable(
 export const highlight = createTable(
   "highlight",
   {id: serial("id").primaryKey().notNull(),
+    expId: integer("exp_id").notNull().references(() => images.id),
     imageUrl: varchar("imageUrl", { length: 1024}).notNull(),
     keystat: varchar("keystat", { length: 256}).notNull(),
     description: varchar("description", {length: 1024}).notNull(),
