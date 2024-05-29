@@ -34,3 +34,15 @@ Personal CV Website
 - [ ] Create highlight box for Hirechain
 - [ ] Update CSS for highlight box
 - [ ] Update CSS for container
+
+We have
+
+Images
+
+DescriptionBox (also Highlight Container)
+HighlightBox
+
+I think the HighlightBox can be a Server component
+The DescriptionBox has to be a Client component
+Images is a Client component
+

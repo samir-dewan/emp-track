@@ -1,4 +1,4 @@
-import "server-only";
+"use server";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
@@ -26,16 +26,10 @@ export async function getHighlightsByExpId(expId: number) {
 
   const highlightsById = await db.select().from(highlight).where(eq(highlight.expId, expId));
 
+  console.log("highlight found: ", highlightsById);
   return highlightsById;
 }
 
-//go into the highlights table
-
-//
-
-//find every instance where the highlight.exp_id equals the exp_id
-
-//db.select().from(highlight).where(eq(highlight.exp_id, exp.id))
 
 export async function getImage(id: number) {
   const user = auth();

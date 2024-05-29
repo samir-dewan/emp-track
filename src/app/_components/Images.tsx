@@ -36,6 +36,7 @@ export default function Images({ images }: ImagesProps) {
 
     const handleClick = (id: number) => {
         setSelectedCard(id);
+        console.log("Have clicked in, going into Description box with id: ", id);
     }
 
     const handleDeselect = () => {
@@ -108,13 +109,11 @@ export default function Images({ images }: ImagesProps) {
                 dateCompleted={overlayContent.dateCompleted}
             />
             {selectedImage && (
-                <DescriptionBox
-                    id={selectedImage.id}
+                    <DescriptionBox id={selectedImage.id}
                     isVisible={selectedCard !== null}
                     name={selectedImage.name}
                     description={selectedImage.description}
-                    imageUrl={selectedImage.imageUrl}
-                />
+                    imageUrl={selectedImage.imageUrl}/>
             )}
         </div>
     );
