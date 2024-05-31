@@ -1,8 +1,8 @@
 "use server";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
-import { highlight, images } from "./db/schema";
+import { and, eq, inArray } from "drizzle-orm";
+import { highlight, images, techStack } from "./db/schema";
 import { redirect } from "next/navigation";
 import analyticsServerClient from "./analytics";
 
@@ -28,6 +28,24 @@ export async function getHighlightsByExpId(expId: number) {
 
   console.log("highlight found: ", highlightsById);
   return highlightsById;
+}
+
+export async function getTechStackByExpId(expId: number) {
+  const user = auth();
+
+  if (!user.userId) throw new Error("Unauthorised");
+
+  const findexp = await db.select({techStackIds: images.techStackIds}).from(images).where(eq(images.id, expId));
+
+  if (findexp) {
+    const techStackArray = findexp[0]?.techStackIds;
+    
+      const techStackIds = techStackArray &&
+      await db.select().from(techStack).where(inArray(techStack.id, techStackArray));
+
+      return techStackIds;
+  }
+  return null;
 }
 
 

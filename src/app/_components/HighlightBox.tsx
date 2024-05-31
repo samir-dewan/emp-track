@@ -13,19 +13,21 @@ type HighlightBoxProps = { highlight: HighlightProps };
 
 export default function HighlightBox({ highlight }: HighlightBoxProps) {
     return (
-                <div key={highlight.expId} className="w-full h-full bg-blue-500 px-8 rounded-lg shadow-lg mb-4 z-20">
-                    <h2 className="text-xl font-bold pb-2">{highlight.keystat}</h2>
-                    <p>{highlight.description}</p>
+                <div key={highlight.expId} className="flex flex-col w-1/3 space-between px-8 rounded-lg shadow-lg mb-4 z-20">
                     {highlight.imageUrl && 
-                        <div className="rounded-md p-2">
+                        <div className="rounded-md p-2 self-center">
                             <Image 
                                 src={highlight.imageUrl} 
                                 alt="hero image" 
-                                width={400} 
-                                height={225} 
+                                width={320} 
+                                height={180} 
                                 style={{ objectFit: "fill" }}
                             />
                         </div>
                     }
+                    <div className="flex">
+                    <span className="text-xl font-bold pb-2">{highlight.keystat}</span>
+                    <p>{highlight.description}</p>
+                    </div>
                 </div>
             )}

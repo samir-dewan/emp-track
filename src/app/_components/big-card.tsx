@@ -36,7 +36,7 @@ export default function BigCard({id, logoUrl, name, translation, hovered, length
         if(isAnimating && cardRef.current) {
             const rect = cardRef.current.getBoundingClientRect();
             console.log(rect);
-            const top = (experienceType === "Professional" ? bigTranslateYButton : -72 )-rect.top;
+            const top = -rect.top;
             const left = -rect.left;
             setPosition({ top, left });
         }
@@ -66,7 +66,7 @@ export default function BigCard({id, logoUrl, name, translation, hovered, length
         w-[12%] shadow-lg
         shadow-black z-50` : 
         `w-[5%] z-40`} cursor-pointer aspect-[5/7] bg-opacity-5 rounded-xl
-        absolute transition-all duration-500 ease-in-out ${isAnimating && 'w-[5%] shadow-none aspect-square rounded-full'}`} 
+        absolute transition-all duration-500 ease-in-out ${isAnimating && 'w-[5%] shadow-none aspect-square'}`} 
         style={{
             transform: isAnimating ? 
             `
@@ -92,7 +92,7 @@ export default function BigCard({id, logoUrl, name, translation, hovered, length
                         style={{
                             objectFit: "cover",
                         }}
-                        className="rounded-full fixed transition duration-200 ease-in-out filter contrast-50 hover:contrast-100"
+                        className="rounded-xl fixed transition duration-200 ease-in-out filter contrast-50 hover:contrast-100"
                     />
                 ) : (
                     <Image
