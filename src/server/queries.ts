@@ -45,7 +45,7 @@ export async function getTechStackByExpId(expId: number) {
 
       return techStackIds;
   }
-  return null;
+  throw new Error("couldn't find techStackIds");
 }
 
 

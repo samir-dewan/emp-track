@@ -85,7 +85,12 @@ export default function DescriptionBox({ id, isVisible, name, description, image
       {techStack ? (
         techStack.map((techS, index) => (
           <div key={index}>
-            {techS.name}
+            <Image 
+            src={techS.imageUrl}
+            alt={techS.name}
+            height={100}
+            width={150}
+            />
           </div>
         ))
       ) : (
