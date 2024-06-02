@@ -13,15 +13,15 @@ type HighlightBoxProps = { highlight: HighlightProps };
 
 export default function HighlightBox({ highlight }: HighlightBoxProps) {
     return (
-                <div key={highlight.expId} className="flex flex-col w-1/3 space-between px-8 rounded-lg shadow-lg mb-4 z-20">
+                <div key={highlight.expId} className="flex flex-col w-1/3 space-between px-8 py-4 rounded-lg shadow-lg mb-4 z-20">
                     {highlight.imageUrl && 
                         <div className="rounded-md p-2 self-center">
                             <Image 
                                 src={highlight.imageUrl} 
                                 alt="hero image" 
                                 width={320} 
-                                height={180} 
-                                style={{ objectFit: "fill" }}
+                                height={180}
+                                style={{ objectFit: "cover" }}
                             />
                         </div>
                     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { getHighlightsByExpId, getTechStackByExpId } from "~/server/queries"; // Ensure the correct import path
+import { getHighlightsByExpId} from "~/server/queries"; // Ensure the correct import path
 import HighlightBox from "~/app/_components/HighlightBox";
+import TechstackContainer from "./techstack-container";
 
 type Highlight = {
   id: number;
@@ -13,14 +13,6 @@ type Highlight = {
 
 type HighlightsProps = Highlight[];
 
-type TechStack = {
-  id: number;
-  name: string;
-  imageUrl: string;
-}
-
-type TechStackProps = TechStack[];
-
 type DescriptionBoxProps = {
   id: number;
   isVisible: boolean;
@@ -31,7 +23,6 @@ type DescriptionBoxProps = {
 
 export default function DescriptionBox({ id, isVisible, name, description, imageUrl }: DescriptionBoxProps) {
   const [highlights, setHighlights] = useState<HighlightsProps | null>(null);
-  const [techStack, setTechStack] = useState<TechStackProps | null>(null);
 
   useEffect(() => {
     const fetchHighlights = async (expId: number) => {
@@ -48,21 +39,6 @@ export default function DescriptionBox({ id, isVisible, name, description, image
     }
   }, [id]);
 
-  useEffect(() => {
-    const fetchTechstack = async(expId: number) => {
-      try {
-        const data = await getTechStackByExpId(expId);
-        setTechStack(data);
-      } catch(error) {
-        console.error("Error fetching techstack: ", error);
-      }
-    };
-
-    if (id) {
-      fetchTechstack(id);
-    }
-  }, [id]);
-
   if (!isVisible) {
     return null;
   }
@@ -71,7 +47,7 @@ export default function DescriptionBox({ id, isVisible, name, description, image
     <div className="absolute w-full h-full bg-blue-500 px-8 rounded-lg shadow-lg z-20">
       <h2 className="text-xl font-bold pb-2">{name}</h2>
       <p>{description}</p>
-      <div className="h-1/2 w-full bg-purple-500">
+      <div className="h-1/2 w-full bg-purple-500 flex justify-between">
       {highlights ? (
         highlights.map((highlight) => (
           <HighlightBox highlight={highlight}/>
@@ -80,23 +56,7 @@ export default function DescriptionBox({ id, isVisible, name, description, image
         <span>Loading...</span>
       )}
       </div>
-
-      <div className="h-1/6 w-full bg-gray-500">
-      {techStack ? (
-        techStack.map((techS, index) => (
-          <div key={index}>
-            <Image 
-            src={techS.imageUrl}
-            alt={techS.name}
-            height={100}
-            width={150}
-            />
-          </div>
-        ))
-      ) : (
-        <span>Loading...</span>
-      )}
-      </div>
+      <TechstackContainer id={id} />
     </div>
   );
 }
